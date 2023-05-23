@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="100dp"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        android:background="@android:color/darker_gray">
 
         <TextView
             android:id="@+id/contact_name"
@@ -113,7 +114,8 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="384dp"
             android:layout_marginBottom="86dp"
-
+            android:textAlignment="textStart"
+            android:drawableRight="@android:drawable/ic_dialog_email"
             android:text="@string/button_zalo"
             app:layout_constraintBottom_toTopOf="@+id/button_diary"
             app:layout_constraintEnd_toEndOf="parent"
