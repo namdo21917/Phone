@@ -1,7 +1,9 @@
 package com.example.phone
+import Contact
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -14,12 +16,20 @@ class ContactDetailActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ContactDetailBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ContactDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val contactName = intent.extras?.getString("CONTACT_NAME")
+        val contactTel = intent.extras?.getString("CONTACT_TEL")
+
+        val contactNameText= findViewById<TextView>(R.id.contact_name)
+        contactNameText.text = contactName
+        val contactTelText= findViewById<TextView>(R.id.contact_tel)
+        contactTelText.text = contactTel
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

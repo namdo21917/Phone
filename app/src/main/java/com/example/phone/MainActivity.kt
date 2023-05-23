@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         adapter.onItemClick = { contact ->
             val intent = Intent(this, ContactDetailActivity::class.java)
-            intent.putExtra("detail", true)
+            intent.putExtra("CONTACT_NAME", contact.name)
+            intent.putExtra("CONTACT_TEL", contact.tel)
             startActivity(intent)
             finish()
         }

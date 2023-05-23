@@ -38,7 +38,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:elevation="0dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:src="@android:drawable/btn_star_big_on" />
         </androidx.cardview.widget.CardView>
 
 
