@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.phone.databinding.ContactDetailBinding
+import kotlin.math.log
 
 
 class ContactDetailActivity : AppCompatActivity() {
@@ -43,9 +44,8 @@ class ContactDetailActivity : AppCompatActivity() {
 //    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.e("LOI", "loi roi")
         return when (item.itemId) {
-            R.id.contact_list -> true
+            android.R.id.home -> true
             else -> super.onOptionsItemSelected(item)
         }
     }
