@@ -1,6 +1,5 @@
 package com.example.phone
 
-import Contact
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem

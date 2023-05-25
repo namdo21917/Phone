@@ -3,7 +3,6 @@ package com.example.phone
 import Contact
 import ContactAdapter
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
