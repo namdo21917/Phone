@@ -14,7 +14,7 @@ class ContactHorizontalAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHorizontalViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.contact, parent, false)
+            .inflate(R.layout.contact_list_horizontal, parent, false)
 
         return ContactHorizontalViewHolder(itemView)
     }

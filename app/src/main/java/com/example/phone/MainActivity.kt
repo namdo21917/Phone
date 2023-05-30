@@ -1,21 +1,22 @@
 package com.example.phone
 
 import Contact
-import ContactAdapter
+import ContactVerticalAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phone.databinding.ContactListBinding
+import com.example.phone.databinding.ContactListVerticalBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
+//    private lateinit var recyclerView: RecyclerView
     private lateinit var contacts: List<List<Contact>>
-    private lateinit var adapter: ContactAdapter
-    private lateinit var binding: ContactListBinding
+    private lateinit var adapter: ContactVerticalAdapter
+    private lateinit var binding: ContactListVerticalBinding
+    private lateinit var contactVerticalView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +25,16 @@ class MainActivity : AppCompatActivity() {
 //        setContentView(_binding.root)
 //        setSupportActionBar(_binding.toolbar)
 
-        binding = ContactListBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
-
-        recyclerView = findViewById(R.id.contact_list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        contacts = createContacts()
-        adapter = ContactAdapter(contacts)
-        recyclerView.adapter = adapter
+//        binding = ContactListVerticalBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+//        setSupportActionBar(binding.toolbar)
+//
+//        recyclerView = findViewById(R.id.contact_list_vertical)
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//
+//        contacts = createContacts()
+//        adapter = ContactVerticalAdapter(contacts)
+//        recyclerView.adapter = adapter
 //        adapter.onItemClick = { contact ->
 //            val intent = Intent(this, ContactDetailActivity::class.java)
 //            intent.putExtra("CONTACT_NAME", contact.name)
@@ -44,6 +45,15 @@ class MainActivity : AppCompatActivity() {
 //        horizontalAdapter = ContactAdapter(contacts)
 //        horizontalRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        binding = ContactListVerticalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        contactVerticalView = findViewById(R.id.recycler_view_vertical)
+        contactVerticalView.layoutManager = LinearLayoutManager(this)
+
+        contacts = createContacts()
+        adapter = ContactVerticalAdapter(contacts)
+        contactVerticalView.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -1,23 +1,23 @@
 package com.example.phone
 
 import Contact
-import ContactAdapter
+import ContactVerticalAdapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phone.databinding.ContactListBinding
+import com.example.phone.databinding.ContactListVerticalBinding
 
 class ContactsActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var contacts: List<Contact>
-    private lateinit var adapter: ContactAdapter
-    private lateinit var binding: ContactListBinding
+    private lateinit var adapter: ContactVerticalAdapter
+    private lateinit var binding: ContactListVerticalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ContactListBinding.inflate(layoutInflater)
+        binding = ContactListVerticalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         recyclerView = findViewById(R.id.contacts_recycler_view)
