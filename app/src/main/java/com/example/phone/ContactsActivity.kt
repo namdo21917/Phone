@@ -24,12 +24,13 @@ class ContactsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         contacts = generateContacts()
-        adapter = ContactAdapter(contacts)
-        recyclerView.adapter = adapter
+//        adapter = ContactAdapter(contacts)
+//        recyclerView.adapter = adapter
     }
 
     private fun generateContacts(): List<Contact> {
         val contacts = ArrayList<Contact>()
+
         contacts.add(Contact("Nam", "0123456789"))
         contacts.add(Contact("Tan", "0988997972"))
         contacts.add(Contact("Quang", "0897997821"))

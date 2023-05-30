@@ -2,25 +2,20 @@ package com.example.phone
 
 import Contact
 import ContactAdapter
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.phone.databinding.ActivityMainBinding
 import com.example.phone.databinding.ContactListBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var contacts: List<Contact>
+    private lateinit var contacts: List<List<Contact>>
     private lateinit var adapter: ContactAdapter
     private lateinit var binding: ContactListBinding
-    private lateinit var _binding: ActivityMainBinding
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +34,15 @@ class MainActivity : AppCompatActivity() {
         contacts = createContacts()
         adapter = ContactAdapter(contacts)
         recyclerView.adapter = adapter
-        adapter.onItemClick = { contact ->
-            val intent = Intent(this, ContactDetailActivity::class.java)
-            intent.putExtra("CONTACT_NAME", contact.name)
-            intent.putExtra("CONTACT_TEL", contact.tel)
-            startActivity(intent)
-
-        }
+//        adapter.onItemClick = { contact ->
+//            val intent = Intent(this, ContactDetailActivity::class.java)
+//            intent.putExtra("CONTACT_NAME", contact.name)
+//            intent.putExtra("CONTACT_TEL", )
+//            startActivity(intent)
+//
+//        }
+//        horizontalAdapter = ContactAdapter(contacts)
+//        horizontalRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
     }
 
@@ -62,18 +59,32 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun createContacts(): List<Contact> {
-        val contacts = ArrayList<Contact>()
-        contacts.add(Contact("Nam", "0123456789"))
-        contacts.add(Contact("Tan", "0988997972"))
-        contacts.add(Contact("Quang", "0897997821"))
-        contacts.add(Contact("Adam", "0846000452"))
-        contacts.add(Contact("Eva", " 0458325466"))
-        contacts.add(Contact("Kien", "0865482354"))
-        contacts.add(Contact("Vinh", "0988997972"))
-        contacts.add(Contact("Quang", "0988997972"))
-        contacts.add(Contact("Duc", "0988997972"))
-        contacts.add(Contact("Minh", "0988997972"))
+    private fun createContacts(): List<List<Contact>> {
+        val contacts = ArrayList<List<Contact>>()
+        val contactList1 = ArrayList<Contact>()
+        contactList1.add(Contact("Nam", "0123456789"))
+        contactList1.add(Contact("Tan", "0988997972"))
+        contactList1.add(Contact("Kien", "0865482354"))
+
+        val contactList2 = ArrayList<Contact>()
+        contactList2.add(Contact("Quang", "0897997821"))
+        contactList2.add(Contact("Duc", "0988997972"))
+        contactList2.add(Contact("Minh", "0988997972"))
+
+        val contactList3 = ArrayList<Contact>()
+        contactList3.add(Contact("Eva", " 0458325466"))
+        contactList3.add(Contact("Adam", "0846000452"))
+        contactList3.add(Contact("Nam", "0123456789"))
+
+        val contactList4 = ArrayList<Contact>()
+        contactList4.add(Contact("Tan", "0988997972"))
+        contactList4.add(Contact("Adam", "0846000452"))
+        contactList4.add(Contact("Vinh", "0988997972"))
+
+        contacts.add(contactList1)
+        contacts.add(contactList2)
+        contacts.add(contactList3)
+        contacts.add(contactList4)
         return contacts
     }
 }

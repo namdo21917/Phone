@@ -7,11 +7,11 @@ import com.example.phone.R
 
 class ContactAdapter(
 //    private val context: Context,
-    private val contacts: List<Contact>
+    private val contacts: List<List<Contact>>
 ) :
     RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
-    var onItemClick: ((Contact) -> Unit)? = null
+    var onItemClick: ((List<Contact>) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -28,16 +28,11 @@ class ContactAdapter(
         val contact = contacts[position]
         holder.bind(contact)
 
-//        holder.itemView.setOnClickListener {
-//            val view = LayoutInflater.from(context).inflate(R.layout.contact_detail,true)
-//        }
     }
 
     inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val contactName: TextView = itemView.findViewById(R.id.contact_name)
-
-        fun bind(contact: Contact) {
-            contactName.text = contact.name
+        fun bind(contacts: List<Contact>) {
+            contacts
         }
 
         init {
