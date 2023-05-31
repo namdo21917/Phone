@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ContactListVerticalBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
         contactVerticalView = findViewById(R.id.recycler_view_horizontal)
         contactVerticalView.layoutManager = LinearLayoutManager(this)

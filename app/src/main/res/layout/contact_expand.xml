@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contact_detail_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="150dp"
+        app:cardBackgroundColor="?android:attr/textColorTertiaryInverse"
+        app:cardCornerRadius="20dp">
+
+        <TextView
+            android:id="@+id/contact_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="50dp"
+            android:paddingTop="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/contact_tel"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="100dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="150dp"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/call"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription=""
+                app:srcCompat="@android:drawable/sym_action_call" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/message"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:srcCompat="@android:drawable/sym_action_chat" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="320dp"
+            android:layout_marginTop="150dp"
+            app:cardCornerRadius="40dp">
+
+            <ImageView
+                android:id="@+id/google_meet"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:srcCompat="@android:drawable/presence_video_online" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp" />
+
+
+</RelativeLayout>
