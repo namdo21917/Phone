@@ -2,6 +2,7 @@ import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phone.R
@@ -12,7 +13,7 @@ class ContactHorizontalAdapter(
     RecyclerView.Adapter<ContactHorizontalAdapter.ContactHorizontalViewHolder>() {
 
     var onItemClick: ((Contact) -> Unit)? = null
-    var expandedPosition = -1
+    var expandedPosition = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHorizontalViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -28,8 +29,8 @@ class ContactHorizontalAdapter(
     override fun onBindViewHolder(holder: ContactHorizontalViewHolder, position: Int) {
         val contact = contacts[position]
         val isExpanded = position === expandedPosition
-//        holder.details.setVisibility(if (isExpanded) View.VISIBLE else View.GONE)
-//        holder.itemView.isActivated = isExpanded
+        holder.details.visibility = (if (isExpanded) View.VISIBLE else View.GONE)
+        holder.itemView.isActivated = isExpanded
 //        holder.itemView.setOnClickListener {
 //            expandedPosition = if (isExpanded) -1 else position
 //            notifyDataSetChanged()
@@ -38,14 +39,20 @@ class ContactHorizontalAdapter(
 
     inner class ContactHorizontalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val contactName: TextView = itemView.findViewById(R.id.contact_name)
-
+        val details: LinearLayout = itemView.findViewById(R.id.details)
         fun bind(contact: Contact) {
             contactName.text = contact.name
         }
 
         init {
             itemView.setOnClickListener {
-                onItemClick?.invoke(contacts[adapterPosition])
+                val position = adapterPosition
+                expandedPosition = if (position == expandedPosition) {
+                    RecyclerView.NO_POSITION
+                } else {
+                    position
+                }
+                notifyItemChanged(position)
             }
 
         }
