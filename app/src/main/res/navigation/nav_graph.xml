@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recycler_view_vertical">
+    app:startDestination="@id/contacts_recycler_view">
 
     <fragment
         android:id="@+id/contacts_recycler_view"

@@ -8,10 +8,11 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_vertical"
+        android:id="@+id/recycler_view_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="horizontal" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

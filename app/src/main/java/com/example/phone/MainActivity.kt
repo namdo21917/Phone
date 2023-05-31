@@ -21,34 +21,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        _binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(_binding.root)
-//        setSupportActionBar(_binding.toolbar)
-
-//        binding = ContactListVerticalBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        setSupportActionBar(binding.toolbar)
-//
-//        recyclerView = findViewById(R.id.contact_list_vertical)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        contacts = createContacts()
-//        adapter = ContactVerticalAdapter(contacts)
-//        recyclerView.adapter = adapter
-//        adapter.onItemClick = { contact ->
-//            val intent = Intent(this, ContactDetailActivity::class.java)
-//            intent.putExtra("CONTACT_NAME", contact.name)
-//            intent.putExtra("CONTACT_TEL", )
-//            startActivity(intent)
-//
-//        }
-//        horizontalAdapter = ContactAdapter(contacts)
-//        horizontalRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
         binding = ContactListVerticalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        contactVerticalView = findViewById(R.id.recycler_view_vertical)
+        contactVerticalView = findViewById(R.id.recycler_view_horizontal)
         contactVerticalView.layoutManager = LinearLayoutManager(this)
 
         contacts = createContacts()
