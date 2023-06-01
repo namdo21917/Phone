@@ -14,6 +14,7 @@ class ContactHorizontalAdapter(
 
     var onItemClick: ((Contact) -> Unit)? = null
     var expandedPosition = RecyclerView.NO_POSITION
+    var previousExpandedPosition = RecyclerView.NO_POSITION
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactHorizontalViewHolder {
         val itemView = LayoutInflater.from(parent.context)

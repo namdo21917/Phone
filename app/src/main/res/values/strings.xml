@@ -11,6 +11,9 @@
     <string name="contact_name">Họ tên</string>
     <string name="contact_tel">Số ĐT</string>
     <string name="call_icon">Call</string>
+    <string name="button_call">Button Call</string>
+    <string name="button_message">Button Message</string>
+    <string name="button_info">Button Info</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
