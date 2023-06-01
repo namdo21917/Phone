@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.phone.databinding.ContactListMainBinding
 import com.example.phone.databinding.ContactListVerticalBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,14 +17,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var contacts: List<List<Contact>>
     private lateinit var adapter: ContactVerticalAdapter
     private lateinit var binding: ContactListVerticalBinding
+    private lateinit var _binding: ContactListMainBinding
     private lateinit var contactVerticalView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ContactListVerticalBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+        _binding = ContactListMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
+        setSupportActionBar(_binding.toolbar)
 
         contactVerticalView = findViewById(R.id.recycler_view_horizontal)
         contactVerticalView.layoutManager = LinearLayoutManager(this)

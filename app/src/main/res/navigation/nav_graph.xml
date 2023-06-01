@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/contacts_recycler_view"
         android:label="@string/contacts"
-        tools:layout="@layout/contact_list_vertical">
+        tools:layout="@layout/contact_list_main">
 
         <action
             android:id="@+id/to_contact_detail"

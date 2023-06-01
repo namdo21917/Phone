@@ -27,7 +27,6 @@ class ContactVerticalAdapter(
     override fun onBindViewHolder(holder: ContactVerticalViewHolder, position: Int) {
         val contacts = contacts[position]
         val contactViewHorizontal = holder.itemView.findViewById<RecyclerView>(R.id.recycler_view_horizontal)
-
         contactViewHorizontal.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
         contactViewHorizontal.adapter = ContactHorizontalAdapter(contacts)
     }
