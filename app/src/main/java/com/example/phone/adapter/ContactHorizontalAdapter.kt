@@ -32,10 +32,7 @@ class ContactHorizontalAdapter(
         val isExpanded = position === expandedPosition
         holder.details.visibility = (if (isExpanded) View.VISIBLE else View.GONE)
         holder.itemView.isActivated = isExpanded
-//        holder.itemView.setOnClickListener {
-//            expandedPosition = if (isExpanded) -1 else position
-//            notifyDataSetChanged()
-//        }
+
     }
 
     inner class ContactHorizontalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
