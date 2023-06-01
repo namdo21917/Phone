@@ -26,4 +26,5 @@
     <color name="md_theme_dark_onError">#FFFFFF</color>
     <color name="md_theme_dark_errorContainer">#F9DEDC</color>
     <color name="md_theme_dark_onErrorContainer">#410E0B</color>
+    <color name="blue">#0000FF</color>
 </resources>
