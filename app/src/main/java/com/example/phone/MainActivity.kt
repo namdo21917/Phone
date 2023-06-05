@@ -1,13 +1,16 @@
 package com.example.phone
 
 import CalendarAdapter
+import CalendarViewPageAdapter
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.phone.databinding.CalendarBinding
+import com.example.phone.databinding.CalendarPageViewBinding
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -19,14 +22,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var selectDate: LocalDate
     private lateinit var monthYearText: TextView
     private lateinit var adapter: CalendarAdapter
+    private lateinit var _binding: CalendarPageViewBinding
+    private lateinit var calendarPageView: ViewPager2
+    private lateinit var pageAdapter: CalendarViewPageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = CalendarBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+//        binding = CalendarBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
 
-        calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
+        _binding = CalendarPageViewBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
+
+//        calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
+        calendarPageView = findViewById(R.id.calendarViewPager)
         monthYearText = findViewById(R.id.monthYearTV)
         selectDate = LocalDate.now()
 
@@ -41,6 +51,7 @@ class MainActivity : AppCompatActivity() {
             nextMonth()
         }
         setMonthView()
+
     }
 
 
@@ -48,8 +59,10 @@ class MainActivity : AppCompatActivity() {
         monthYearText.text = monthYearFromDate(selectDate)
         val daysInMonth: List<String> = daysInMonthArray(selectDate)
 
-        calendarRecyclerView.layoutManager = GridLayoutManager(applicationContext, 7)
-        calendarRecyclerView.adapter = CalendarAdapter(daysInMonth)
+//        calendarRecyclerView.layoutManager = GridLayoutManager(applicationContext, 7)
+//        calendarRecyclerView.adapter = CalendarAdapter(daysInMonth)
+//        calendarPageView.layoutManager = GridLayoutManager(applicationContext, 7)
+        calendarPageView.adapter = CalendarViewPageAdapter(daysInMonth)
 
     }
 
@@ -158,10 +171,52 @@ class MainActivity : AppCompatActivity() {
 //        contactList4.add(Contact("Adam", "0846000452"))
 //        contactList4.add(Contact("Vinh", "0988997972"))
 //
+//        val contactList5 = ArrayList<Contact>()
+//        contactList5.add(Contact("Tan", "0988997972"))
+//        contactList5.add(Contact("Adam", "0846000452"))
+//        contactList5.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList6 = ArrayList<Contact>()
+//        contactList6.add(Contact("Tan", "0988997972"))
+//        contactList6.add(Contact("Adam", "0846000452"))
+//        contactList6.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList7 = ArrayList<Contact>()
+//        contactList7.add(Contact("Tan", "0988997972"))
+//        contactList7.add(Contact("Adam", "0846000452"))
+//        contactList7.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList8 = ArrayList<Contact>()
+//        contactList8.add(Contact("Tan", "0988997972"))
+//        contactList8.add(Contact("Adam", "0846000452"))
+//        contactList8.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList9 = ArrayList<Contact>()
+//        contactList9.add(Contact("Tan", "0988997972"))
+//        contactList9.add(Contact("Adam", "0846000452"))
+//        contactList9.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList10  = mutableListOf<Contact>()
+//        contactList10.add(Contact("Tan", "0988997972"))
+//        contactList10.add(Contact("Adam", "0846000452"))
+//        contactList10.add(Contact("Vinh", "0988997972"))
+//
+//        val contactList11 = ArrayList<Contact>()
+//        contactList11.add(Contact("Tan", "0988997972"))
+//        contactList11.add(Contact("Adam", "0846000452"))
+//        contactList11.add(Contact("Vinh", "0988997972"))
+//
 //        contacts.add(contactList1)
 //        contacts.add(contactList2)
 //        contacts.add(contactList3)
 //        contacts.add(contactList4)
+//        contacts.add(contactList5)
+//        contacts.add(contactList6)
+//        contacts.add(contactList7)
+//        contacts.add(contactList8)
+//        contacts.add(contactList9)
+//        contacts.add(contactList10)
+//        contacts.add(contactList11)
 //        return contacts
 //    }
 //}

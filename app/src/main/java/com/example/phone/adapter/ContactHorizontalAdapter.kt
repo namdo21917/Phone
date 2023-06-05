@@ -29,6 +29,7 @@ class ContactHorizontalAdapter(
 
     override fun onBindViewHolder(holder: ContactHorizontalViewHolder, position: Int) {
         val contact = contacts[position]
+        holder.bind(contact)
         val isExpanded = position === expandedPosition
         holder.details.visibility = (if (isExpanded) View.VISIBLE else View.GONE)
         holder.itemView.isActivated = isExpanded
