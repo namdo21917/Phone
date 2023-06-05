@@ -10,12 +10,12 @@ class CalendarAdapter(
     private val daysOfMonth: List<String>
 ) :
     RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
-    var onItemClick: ((List<String>) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.calendar_cell, parent, false)
-
+        val layoutParams: ViewGroup.LayoutParams = itemView.layoutParams
+        layoutParams.height = ((parent.height * 0.166666666).toInt())
         return CalendarViewHolder(itemView)
     }
 
@@ -30,13 +30,6 @@ class CalendarAdapter(
 
     inner class CalendarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val day: TextView = itemView.findViewById(R.id.cell_day_text)
-
-        init {
-            itemView.setOnClickListener {
-                onItemClick?.invoke(listOf(daysOfMonth[adapterPosition]))
-            }
-
-        }
     }
 }
 

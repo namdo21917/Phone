@@ -1,21 +1,13 @@
 package com.example.phone
 
 import CalendarAdapter
-import Contact
-import ContactVerticalAdapter
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phone.databinding.CalendarBinding
-import com.example.phone.databinding.ContactListMainBinding
-import com.example.phone.databinding.ContactListVerticalBinding
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -84,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         val daysInMonth = yearMonth.lengthOfMonth()
 
         val firstOfMonth: LocalDate = selectDate.withDayOfMonth(1)
-        val dayOfWeek = firstOfMonth.dayOfWeek.value;
+        val dayOfWeek = firstOfMonth.dayOfWeek.value
         for (i in 1..42) {
             if (i <= dayOfWeek || i > daysInMonth + dayOfWeek) {
                 daysInMonthList.add("")
