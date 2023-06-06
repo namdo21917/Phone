@@ -1,23 +1,28 @@
 package com.example.phone.adapter
 
+import CalendarAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phone.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
 class CalendarViewPageAdapter(
-    private val daysOfMonth: List<String>
+    private val daysOfMonth: List<String>, private var selectDate: LocalDate
 ) :
     RecyclerView.Adapter<CalendarViewPageAdapter.CalendarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.calendar_cell_page_view, parent, false)
-        val layoutParams: ViewGroup.LayoutParams = itemView.layoutParams
-        layoutParams.height = ((parent.height * 0.166666666).toInt())
+            .inflate(R.layout.calendar_page_view, parent, false)
+//        val layoutParams: ViewGroup.LayoutParams = itemView.layoutParams
+//        layoutParams.height = ((parent.height * 0.166666666).toInt())
+
         return CalendarViewHolder(itemView)
     }
 
@@ -26,12 +31,25 @@ class CalendarViewPageAdapter(
     }
 
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
-        holder.day.text = daysOfMonth[position]
+        holder.monthYearTV.text = monthYearFromDate(selectDate)
+        val calendar = holder.itemView.findViewById<RecyclerView>(R.id.calendarRecyclerViewInPageViewer)
+        setMonthView(calendar)
 
     }
 
+    private fun setMonthView(recyclerView: RecyclerView) {
+        recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 7)
+        recyclerView.adapter = CalendarAdapter(daysOfMonth)
+
+    }
+
+    private fun monthYearFromDate(date: LocalDate): String {
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("MMMM yyyy");
+        return date.format(formatter)
+    }
+
     inner class CalendarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val day: TextView = itemView.findViewById(R.id.cell_day_text)
+        val monthYearTV: TextView = itemView.findViewById(R.id.monthYearTV)
     }
 }
 
