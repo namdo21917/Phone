@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.phone.databinding.CalendarBinding
 import com.example.phone.databinding.CalendarPageViewBinding
@@ -31,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.page_view)
 
         val viewPager2: ViewPager2 = findViewById(R.id.calendarViewPager)
-//        calendarRecyclerView = findViewById(R.id.calendarRecyclerView)
         selectDate = LocalDate.now()
         val daysInMonth: List<String> = daysInMonthArray(selectDate)
         pageAdapter = CalendarViewPageAdapter(daysInMonth, selectDate)
