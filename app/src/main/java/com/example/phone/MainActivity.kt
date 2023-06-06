@@ -1,30 +1,15 @@
 package com.example.phone
 
-import CalendarAdapter
-import com.example.phone.adapter.CalendarViewPageAdapter
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.example.phone.databinding.CalendarBinding
-import com.example.phone.databinding.CalendarPageViewBinding
+import com.example.phone.adapter.CalendarViewPageAdapter
 import java.time.LocalDate
 import java.time.YearMonth
-import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var calendarRecyclerView: RecyclerView
-    private lateinit var binding: CalendarBinding
     private lateinit var selectDate: LocalDate
-    private lateinit var monthYearText: TextView
-    private lateinit var adapter: CalendarAdapter
-    private lateinit var _binding: CalendarPageViewBinding
-    private lateinit var calendarPageView: ViewPager2
     private lateinit var pageAdapter: CalendarViewPageAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
