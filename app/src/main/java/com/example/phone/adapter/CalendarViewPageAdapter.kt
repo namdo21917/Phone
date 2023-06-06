@@ -13,15 +13,13 @@ import java.time.format.DateTimeFormatter
 
 
 class CalendarViewPageAdapter(
-    private val daysOfMonth: List<String>, private var selectDate: LocalDate
+    private var daysOfMonth: List<String>, private var selectDate: LocalDate
 ) :
     RecyclerView.Adapter<CalendarViewPageAdapter.CalendarViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.calendar_page_view, parent, false)
-//        val layoutParams: ViewGroup.LayoutParams = itemView.layoutParams
-//        layoutParams.height = ((parent.height * 0.166666666).toInt())
 
         return CalendarViewHolder(itemView)
     }
@@ -41,6 +39,12 @@ class CalendarViewPageAdapter(
         recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 7)
         recyclerView.adapter = CalendarAdapter(daysOfMonth)
 
+    }
+
+    fun updateData(daysOfMonth: List<String>, selectDate: LocalDate) {
+        this.daysOfMonth = daysOfMonth
+        this.selectDate = selectDate
+        notifyDataSetChanged()
     }
 
     private fun monthYearFromDate(date: LocalDate): String {

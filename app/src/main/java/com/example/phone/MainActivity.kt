@@ -1,6 +1,7 @@
 package com.example.phone
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.phone.adapter.CalendarViewPageAdapter
@@ -11,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var selectDate: LocalDate
     private lateinit var pageAdapter: CalendarViewPageAdapter
+    private var previousItem: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,34 @@ class MainActivity : AppCompatActivity() {
         val daysInMonth: List<String> = daysInMonthArray(selectDate)
         pageAdapter = CalendarViewPageAdapter(daysInMonth, selectDate)
         viewPager2.adapter = pageAdapter
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                val currentItem = viewPager2.currentItem
+
+                if (currentItem > previousItem) {
+                    selectDate = selectDate.plusMonths(1)
+                } else if (currentItem < previousItem) {
+                    selectDate = selectDate.minusMonths(1)
+                }
+                val daysInMonth: List<String> = daysInMonthArray(selectDate)
+                pageAdapter.updateData(daysInMonth, selectDate)
+                previousItem = currentItem
+
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+                if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                    val currentItem = viewPager2.currentItem
+                    val itemCount = pageAdapter.itemCount
+                    if (currentItem == 0) {
+                        viewPager2.setCurrentItem(itemCount - 2, false)
+                    } else if (currentItem == itemCount - 1) {
+                        viewPager2.setCurrentItem(1, false)
+                    }
+                }
+            }
+        })
     }
 
     private fun daysInMonthArray(date: LocalDate): List<String> {
@@ -42,7 +72,6 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
 
 
 //package com.example.phone
