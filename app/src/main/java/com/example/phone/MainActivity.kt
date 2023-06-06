@@ -1,7 +1,7 @@
 package com.example.phone
 
 import CalendarAdapter
-import CalendarViewPageAdapter
+import com.example.phone.adapter.CalendarViewPageAdapter
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -40,16 +40,16 @@ class MainActivity : AppCompatActivity() {
         monthYearText = findViewById(R.id.monthYearTV)
         selectDate = LocalDate.now()
 
-        val previousButton: Button = findViewById(R.id.previous_button)
-        val nextButton: Button = findViewById(R.id.next_button)
-
-        previousButton.setOnClickListener {
-            previousMonth()
-        }
-
-        nextButton.setOnClickListener {
-            nextMonth()
-        }
+//        val previousButton: Button = findViewById(R.id.previous_button)
+//        val nextButton: Button = findViewById(R.id.next_button)
+//
+//        previousButton.setOnClickListener {
+//            previousMonth()
+//        }
+//
+//        nextButton.setOnClickListener {
+//            nextMonth()
+//        }
         setMonthView()
 
     }
@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
 //        calendarRecyclerView.layoutManager = GridLayoutManager(applicationContext, 7)
 //        calendarRecyclerView.adapter = CalendarAdapter(daysInMonth)
 //        calendarPageView.layoutManager = GridLayoutManager(applicationContext, 7)
-        calendarPageView.adapter = CalendarViewPageAdapter(daysInMonth)
-
+        pageAdapter = CalendarViewPageAdapter(daysInMonth)
+        calendarPageView.adapter = pageAdapter
     }
 
     private fun previousMonth() {
