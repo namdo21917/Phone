@@ -1,4 +1,3 @@
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,14 @@ class ContactHorizontalAdapter(
         val isExpanded = position === expandedPosition
         holder.details.visibility = (if (isExpanded) View.VISIBLE else View.GONE)
         holder.itemView.isActivated = isExpanded
-
+        if (isExpanded) {
+            previousExpandedPosition = position
+        }
+        holder.itemView.setOnClickListener {
+            expandedPosition = if (isExpanded) -1 else position
+            notifyItemChanged(previousExpandedPosition)
+            notifyItemChanged(position)
+        }
     }
 
     inner class ContactHorizontalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -43,9 +49,11 @@ class ContactHorizontalAdapter(
             contactName.text = contact.name
         }
 
+
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
+
                 expandedPosition = if (position == expandedPosition) {
                     RecyclerView.NO_POSITION
                 } else {

@@ -11,6 +11,8 @@ class CalendarAdapter(
 ) :
     RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
+    var onItemClick: ((String) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.calendar_cell, parent, false)
@@ -30,6 +32,11 @@ class CalendarAdapter(
 
     inner class CalendarViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val day: TextView = itemView.findViewById(R.id.cell_day_text)
+        init {
+            itemView.setOnClickListener {
+                onItemClick?.invoke(daysOfMonth[adapterPosition])
+            }
+        }
     }
 }
 

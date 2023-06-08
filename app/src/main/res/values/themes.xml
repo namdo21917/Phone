@@ -10,4 +10,5 @@
     <style name="Theme.Traning.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Traning.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight"/>
 </resources>

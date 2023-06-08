@@ -1,13 +1,14 @@
 package com.example.phone.adapter
 
 import CalendarAdapter
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.phone.ContactsActivity
 import com.example.phone.R
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -31,7 +32,8 @@ class CalendarViewPageAdapter(
 
     override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
         holder.monthYearTV.text = monthYearFromDate(selectDate)
-        val calendar = holder.itemView.findViewById<RecyclerView>(R.id.calendarRecyclerViewInPageViewer)
+        val calendar =
+            holder.itemView.findViewById<RecyclerView>(R.id.calendarRecyclerViewInPageViewer)
         setMonthView(calendar)
 
     }
@@ -39,7 +41,6 @@ class CalendarViewPageAdapter(
     private fun setMonthView(recyclerView: RecyclerView) {
         recyclerView.layoutManager = GridLayoutManager(recyclerView.context, 7)
         recyclerView.adapter = CalendarAdapter(daysOfMonth)
-
     }
 
     fun updateData(daysOfMonth: List<String>, selectDate: LocalDate) {
