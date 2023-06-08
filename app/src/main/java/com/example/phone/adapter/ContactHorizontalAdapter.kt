@@ -1,9 +1,12 @@
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.phone.ContactDetailActivity
 import com.example.phone.R
 
 class ContactHorizontalAdapter(
@@ -11,7 +14,7 @@ class ContactHorizontalAdapter(
 ) :
     RecyclerView.Adapter<ContactHorizontalAdapter.ContactHorizontalViewHolder>() {
 
-    var onItemClick: ((Contact) -> Unit)? = null
+    var onItemClick: ((Button) -> Unit)? = null
     var expandedPosition = RecyclerView.NO_POSITION
     var previousExpandedPosition = RecyclerView.NO_POSITION
 
@@ -40,15 +43,17 @@ class ContactHorizontalAdapter(
             notifyItemChanged(previousExpandedPosition)
             notifyItemChanged(position)
         }
+
+
     }
 
     inner class ContactHorizontalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val contactName: TextView = itemView.findViewById(R.id.contact_name)
         val details: LinearLayout = itemView.findViewById(R.id.details)
+
         fun bind(contact: Contact) {
             contactName.text = contact.name
         }
-
 
         init {
             itemView.setOnClickListener {

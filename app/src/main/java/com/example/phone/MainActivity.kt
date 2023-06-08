@@ -81,6 +81,7 @@ import ContactVerticalAdapter
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -100,6 +101,8 @@ class MainActivity : AppCompatActivity() {
         _binding = ContactListMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
         setSupportActionBar(_binding.toolbar)
+
+
 
         contactVerticalView = findViewById(R.id.recycler_view_horizontal)
         contactVerticalView.layoutManager = LinearLayoutManager(this)
